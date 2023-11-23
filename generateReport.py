@@ -4,6 +4,8 @@ from tkinter import ttk
 from reportlab.pdfgen.canvas import Canvas
 # from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
+# from reportlab.lib.colors import HexColor
+from reportlab.graphics import shapes
 
 
 ###################################################################
@@ -12,38 +14,93 @@ from reportlab.lib import colors
 
 # Creates actual report
 def createReport():
-    # Get user input
+    # Get user input // Remove me?  Just use the getters?
     firstName = firstNameInput.get()
     lastName = lastNameInput.get()
+    dateOfBirth = "00/00/0000"
+    testNorm = "END OF GRADE BLAH BLAH BLAH IS THIS USER INPUT???"
+    testDate = "11/11/1111"
+    levelMaybe = "CAT 6 LEVEL 18 - SURVEY FORM C"
     score1 = score1Input.get()
     score2 = score2Input.get()
 
-
+    # Other Values
     fileName = lastName + "_Report.pdf"
     documentTitle = "sample"
-    title = "Report for " + firstName + lastName
-    subTitle = "this better be centered"
-    textLines = [
-        "this is line one",
-        "and this is line two",
-        "this is score 1: " + score1,
-        "and this is score 2: " + score2
+    title = "BasicSkills"
+    subTitle = "Assesment & Educational Services"
+    address = [
+        "19146 Molalla Avenue",
+        "Oregon City, Oregon 97045-8975",
+        "Phone: (503) 650-5282"
     ]
+    testName = "California Achievement Test 6, Terra Nova 2 Test Report"
 
     pdf = Canvas(fileName)
     pdf.setTitle(documentTitle)
+    y = 750
+
+    ##### Header #####
 
     # Title
-    pdf.setFont("Helvetica-Bold", 30)
-    pdf.drawCentredString(300, 770, title)
-    pdf.drawCentredString(290, 720, subTitle)
+    pdf.setFillColor(colors.navy)
+    pdf.setFont("Times-Bold", 60)
+    pdf.drawCentredString(300, y, title)
 
-    # Intro
-    pdf.line(30, 710, 550, 710)
-    text = pdf.beginText(40, 680)
-    for line in textLines:
-        text.textLine(line)
-    pdf.drawText(text)
+    # Subtitle
+    y = y - 25
+    pdf.setFont("Times-Bold", 20)
+    pdf.drawCentredString(300, y, subTitle)
+
+    # Address
+    pdf.setFillColor(colors.black)
+    pdf.setFont("Helvetica", 12)
+    y = y - 25
+    for line in address:
+        pdf.drawCentredString(300, y, line)
+        y = y - 15
+    
+    # Test Name
+    y = 630
+    pdf.drawCentredString(300, y, testName)
+
+    ##### Student Info #####
+
+    # Student Name
+    y = 600
+    pdf.drawString(50, y, "STUDENT'S NAME:")
+    pdf.drawString(200, y, firstName + " " + lastName)
+
+    # Student Date of Birth
+    y = y - 20
+    pdf.drawString(50, y, "DATE OF BIRTH:")
+    pdf.drawString(200, y, dateOfBirth)
+
+    # Test Norm?
+    y = y - 20
+    pdf.drawString(50, y, "TEST NORM:")
+    pdf.drawString(200, y, testNorm)
+
+    # Test Date
+    y = y - 20
+    pdf.drawString(50, y, "TEST DATE:")
+    pdf.drawString(200, y, testDate)
+
+    # Level?
+    y = y - 20
+    pdf.drawString(50, y, levelMaybe)
+
+    # Horizontal Lines
+    y = y - 20
+    shapes.Line(50, y, 300, y, strokeColor=colors.black, strokeWidth=2)
+    y = y - 5
+    shapes.Line(50, y, 300, y, strokeColor=colors.black, strokeWidth=2)
+
+    ##### Scores #####
+
+    ##### Footer #####
+    
+    
 
     pdf.save()
 

@@ -92,15 +92,77 @@ def createReport():
 
     # Horizontal Lines
     y = y - 20
-    shapes.Line(50, y, 300, y, strokeColor=colors.black, strokeWidth=2)
+    pdf.line(50, y, 540, y)
     y = y - 5
-    shapes.Line(50, y, 300, y, strokeColor=colors.black, strokeWidth=2)
+    pdf.line(50, y, 540, y)
 
     ##### Scores #####
 
+    # Headers
+    y = y - 25
+    pdf.setFont("Helvetica-Bold", 12)
+    pdf.drawString(50, y, "Subtest Title")
+    pdf.drawString(250, y, "RS")
+    pdf.drawString(300, y, "NP")
+    pdf.drawString(350, y, "NCE")
+    pdf.drawString(400, y, "S9")
+    pdf.drawString(450, y, "GE")
+    pdf.drawString(500, y, "SS")
+
+    # Reading
+    y = y - 25
+    pdf.setFont("Helvetica", 12)
+    pdf.drawString(50, y, "READING")
+    pdf.drawString(250, y, "RS")
+    pdf.drawString(300, y, "NP")
+    pdf.drawString(350, y, "NCE")
+    pdf.drawString(400, y, "S9")
+    pdf.drawString(450, y, "GE")
+    pdf.drawString(500, y, "SS")
+
+    # Language
+    y = y - 25
+    pdf.setFont("Helvetica", 12)
+    pdf.drawString(50, y, "LANGUAGE")
+    pdf.drawString(250, y, "RS")
+    pdf.drawString(300, y, "NP")
+    pdf.drawString(350, y, "NCE")
+    pdf.drawString(400, y, "S9")
+    pdf.drawString(450, y, "GE")
+    pdf.drawString(500, y, "SS")
+
+    # Mathematics
+    y = y - 25
+    pdf.setFont("Helvetica", 12)
+    pdf.drawString(50, y, "MATHEMATICS")
+    pdf.drawString(250, y, "RS")
+    pdf.drawString(300, y, "NP")
+    pdf.drawString(350, y, "NCE")
+    pdf.drawString(400, y, "S9")
+    pdf.drawString(450, y, "GE")
+    pdf.drawString(500, y, "SS")
+
+    # Total Score
+    y = y - 25
+    pdf.setFont("Helvetica", 12)
+    pdf.drawString(50, y, "TOTAL SCORE")
+    pdf.drawString(250, y, "RS")
+    pdf.drawString(300, y, "NP")
+    pdf.drawString(350, y, "NCE")
+    pdf.drawString(400, y, "S9")
+    pdf.drawString(450, y, "GE")
+    pdf.drawString(500, y, "SS")
+
+
     ##### Footer #####
-    
-    
+    y = y - 100
+    pdf.drawString(50, y, "Note: Examiner Qualification: This test was administered by [Name Name] who is qualified")
+    y = y - 15
+    pdf.drawString(50, y, "and neutral in regard to the above named child.")
+    y = y - 30
+    pdf.drawString(50, y, "The Total Score is based on an average of the Scale Scores for the Reading, Language, and")
+    y = y - 15
+    pdf.drawString(50, y, "Mathematics subtests.")
 
     pdf.save()
 

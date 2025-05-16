@@ -9,10 +9,12 @@ This repo is for all the projects mom asks me to work on for Basic Skills.  Curr
 - **PER**: Landing page with PER forms for each grade.  PER forms tally up the inputed scores and allows the user to print, save, and score more.
     - Exacutable: `/PER/dist/PER_Script.exe`
 - **ReportGenerator**: Generates a formatted report based on inputted values.  Incomplete.
-    - Exacutable: `ReportGenerator/scriptForInstaller.exe`
+    - Exacutable: `/ReportGenerator/scriptForInstaller.exe`
 
 ## Usage
-To run one of these programs all you need to do is run (double click) the executable file in the appropriate folder.
+The actual script that contains all the logic for these projects is in a .py file, but I am bundling everything up into an exacutable so your computer does not need to have anything extra isntalled (python, libraries, etc).
+
+**To run one of these projects all you need is the executable file, and you can just double click to run it**.
 
 ## Development
 

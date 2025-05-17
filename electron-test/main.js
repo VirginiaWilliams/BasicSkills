@@ -10,12 +10,18 @@ function createMainWindow() {
         title: 'PER Grader',
         width: isDev ? 1000 : 500,
         height: 800,
+
+        // The lines below solved the issue
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false
+        }
     })
 
     // open dev tools if in dev
-    // if (isDev) {
-    //     mainWindow.webContents.openDevTools();
-    // }
+    if (isDev) {
+        mainWindow.webContents.openDevTools();
+    }
 
     mainWindow.loadFile(path.join(__dirname, './renderer/index.html'))
 }

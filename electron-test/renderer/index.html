@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="test=device-test, initial-scale=1.0" />
     <meta
     http-equiv="Content-Security-Policy"
     content="script-src 'self' 'unsafe-inline'"
@@ -13,26 +13,320 @@
   />
   <link rel="stylesheet" href="css/style.css" />
   <script src="js/renderer.js" defer></script>
-    <title>ImageResizer</title>
+  <script src="js/pdfHandling.js" defer></script>
+  <title>PER Grader</title>
   </head>
   <body class="bg-teal-700">
     <div
-      class="max-w-xl m-auto h-screen flex flex-col align-center justify-center"
+      class="m-auto h-screen flex flex-col scrollable"
     >
-      <div class="flex flex-col w-full items-center justify-center bg-grey-lighter">
-        <!-- Form -->
-        <form id="input-form">
-          <div class="mt-6">
-            <label class="mt-1 block text-white text-center w-80 m-auto py-3 shadow-sm border-gray-300 rounded-md">Width</label>
+      <!-- Form -->
+      <form id="input-form">
+        <div class="student-info">
+          <div>
+            <label class="mt-1 block text-white w-20 m-auto py-3 shadow-sm border-gray-300 rounded-md">Student Name: </label>
             <input
-              type="number"
-              name="width"
-              id="width"
-              class="mt-1 block w-80 m-auto p-3 shadow-sm border-gray-300 rounded-md"
-              placeholder="Width"
+              type="text"
+              name="studentName"
+              id="studentName"
+              class="mt-1 block w-20 m-auto p-3 shadow-sm border-gray-300 rounded-md"
+              placeholder=""
             />
           </div>
-        </form>
+          <div>
+            <label class="mt-1 block text-white w-20 m-auto py-3 shadow-sm border-gray-300 rounded-md">Test Date: </label>
+            <input
+              type="text"
+              name="testDate"
+              id="testDate"
+              class="mt-1 block w-20 m-auto p-3 shadow-sm border-gray-300 rounded-md"
+              placeholder=""
+            />
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="flex flex-row w-full bg-grey-lighter">
+          <div class="flex flex-col w-full bg-grey-lighter left-col">
+            <!-- Reading Objectives ------------------------------------------------------------------ -->
+            <h1 class="text-white w-20">Reading Objectives</h1>
+            <!-- -------------------- -->
+            <h2 class="text-white w-20">Can answer questions at the following levels of understanding:</h2>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Knowledge</p>
+              <input type="text" class="number-input reading" />
+              <p class="number-input-score">/ 4</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Comprehension</p>
+              <input type="text" class="number-input reading" />
+              <p class="number-input-score">/ 8</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Analysis</p>
+              <input type="text" class="number-input reading" />
+              <p class="number-input-score">/ 7</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Application</p>
+              <input type="text" class="number-input reading" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Synthesis</p>
+              <input type="text" class="number-input reading" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Evaluation</p>
+              <input type="text" class="number-input reading" />
+              <p class="number-input-score">/ 3</p>
+            </div>
+            <br>
+            <!-- -------------------- -->
+            <h2 class="text-white w-20">Vocabulary</h2>
+            <br>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can identify the orrect use or meaning of a word or phrase</p>
+              <input type="text" class="number-input reading" />
+              <p class="number-input-score">/ 7</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Undersatnds the meaning of common prefixes and suffixes</p>
+              <input type="text" class="number-input reading" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can identify the correct definition of a word</p>
+              <input type="text" class="number-input reading" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <br>
+            <!-- -------------------- -->
+            <div class="flex flex-row number-input-row">
+              <p class="total number-input-description">Total</p>
+              <input type="text" id="reading-total-display" class="total number-input" disabled/>
+              <p class="total number-input-score">/ 33</p>
+            </div>
+          </div>
+          <div class="flex flex-col w-full bg-grey-lighter right-col">
+            <!-- Language Objectives ------------------------------------------------------------------ -->
+            <h1 class="text-white w-20">Language Objectives</h1>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can recognize a correctly-constructed sentence</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 4</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can identify sentences that do not support the topic sentence</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 4</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can identify nouns, pronouns, determiners, conjunctions, or verbs that agee in number, or tesnse or function.</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 7</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can combine sentences for clarity</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 4</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can choose the best topic sentence for a paragraph</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 3</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can organize or sequence sentences to make a paragrah</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can idenitify and /or correct run-on sentences</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 2</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can predict the usefulness of potential source Material</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can identify and/or correct a sentence fragment</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="flex flex-row w-full bg-grey-lighter">
+          <div class="flex flex-col w-full bg-grey-lighter left-col">
+            <!-- Mathematics Objectives ------------------------------------------------------------------ -->
+            <h1 class="text-white w-20">Mathematics Objectives</h1>
+            <!-- -------------------- -->
+            <h2 class="text-white w-20">Math computation</h2>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can multiply and divide decimals</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 2</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can subtract mixed numbers with different denominators</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can find the precent of a number</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+          </div>
+          <div class="flex flex-col w-full bg-grey-lighter right-col">
+            <!-- -------------------- -->
+            <h2 class="text-white w-20"></h2>
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="flex flex-row w-full bg-grey-lighter">
+          <div class="flex flex-col w-full bg-grey-lighter left-col">
+            <!-- -------------------- -->
+            <h2 class="text-white w-20">Math Problem Solving</h2>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can find solutions to story problems involving meoney</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 2</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can use subtractin of decimals to solve story problems</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can estimate solutions to subtraction problems involving whole numbers</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can estimate solutions to subtraction problems involving money</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can select the correct operation required to solve a story problem</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can read, understand, and apply graph data and other forms of data</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can use factoring and multiples to solve story problems</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 3</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can write numers using expanded notatin and exponents</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can apply concepts of lines, line segments, and rays</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can determine mode, median, or mean for a set of data</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Understands and can apply place value concepts</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can read and recognize numbers</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+          </div>
+          <div class="flex flex-col w-full bg-grey-lighter right-col">
+            <!-- ------------------------------ -->
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can apply simple algebra concepts to solve story problems and equations</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can distinguish between parallel and perpendicular lines</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can use reasoning to find soltions to problmes involving time</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can use reasoning to find solutions to problems involving area</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can solve measurement problems involving scaled drawings</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can identify missing information required to solve story problems</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can identify common geometric shapes</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can identify solution patterns necessary to solve sotry problems</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 2</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can solve story problems involving distance, rate, and time</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can identify parts of geometrical solids</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Cand etermine probablitiy</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+            <div class="flex flex-row number-input-row">
+              <p class="number-input-description">Can solve two-step story problems</p>
+              <input type="text" class="number-input" />
+              <p class="number-input-score">/ 1</p>
+            </div>
+          </div>
+        </div>
+      </form>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="container">
+        <button class='generate-button' id="generate-button">Generate PDF</button>
       </div>
     </div>
   </body>

@@ -7,7 +7,7 @@
 }
 
 .page-header {
-  font-size: 20px;
+  font-size: 16px;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -33,7 +33,7 @@
 
 .input-col {
   width: 18rem;
-  margin-right: 2rem;
+  margin-left: 2rem;
 }
 
 .header-1 {
@@ -105,7 +105,9 @@
 
 /* ************** Totals ************** */
 
-
+.total {
+  font-weight: 600;
+}
 
 /* ************** Misc ************** */
 .page-break {
@@ -114,4 +116,16 @@
 
 body {
   font-family: "Times New Roman", Times, serif;
+}
+
+p {
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+}
+
+.center {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 0;
 }

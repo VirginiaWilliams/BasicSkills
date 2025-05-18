@@ -12,16 +12,21 @@ var elementHandler = {
 };
 
 generateButton.addEventListener('click', async function() {
-  var inputs = document.querySelectorAll('input');
+  // Remove junk
 
+  var inputs = document.querySelectorAll('input');
   inputs.forEach(input => {
     input.style.border = '0 none';
   });
 
+  var generateButton = document.getElementById('generate-button');
+  generateButton.style.display = 'none';
+
+  // Process
 
   var element = document.getElementById('entire-thing');
   var opt = {
-    margin:       1,
+    margin:       0.5,
     filename:     'myfile.pdf',
     html2canvas:  { scale: 1, scrollY: 0 },
     jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
@@ -39,7 +44,11 @@ generateButton.addEventListener('click', async function() {
 
   await html2pdf().from(element).set(opt).save();
 
+  // Add junk back in
+
   inputs.forEach(input => {
     input.style.border = '';
   });
+
+  generateButton.style.display = 'none';
 })

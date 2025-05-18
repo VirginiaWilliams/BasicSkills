@@ -50,5 +50,5 @@ generateButton.addEventListener('click', async function() {
     input.style.border = '';
   });
 
-  generateButton.style.display = 'none';
+  generateButton.style.display = '';
 })

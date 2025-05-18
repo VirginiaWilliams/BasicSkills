@@ -1,7 +1,5 @@
 /image-resizer-electron
 
-/electron-test/PER Grader-win32-x64
-
 /electron-test/node-modules
 # /electron-test/node-modules/*
 # electron-test/node-modules/

@@ -1,5 +1,8 @@
-const { app, BrowserWindow } = require('electron');
-const path  = require('path');
+import { app, BrowserWindow } from 'electron';
+import path from 'path';
+
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 const isMac = process.platform === 'darwin';
 
@@ -22,6 +25,9 @@ function createMainWindow() {
     if (isDev) {
         mainWindow.webContents.openDevTools();
     }
+
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename);
 
     mainWindow.loadFile(path.join(__dirname, './renderer/index.html'))
 }

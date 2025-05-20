@@ -1,4 +1,21 @@
+function checkNumberValidity(ev) {
+    if (ev.target.value > ev.target.max) {
+        ev.target.classList.add('error');
+    }
+    else if (ev.target.value < ev.target.min) {
+        ev.target.classList.add('error');
+    }
+    else {
+        ev.target.classList.remove('error');
+    }
+}
+
 window.addEventListener("DOMContentLoaded", e => {
+    var inputs = document.querySelectorAll('input');
+
+    inputs.forEach(async i => {
+        i.addEventListener("input", checkNumberValidity);
+    });
 
     // Event listeners
     document.querySelectorAll(".reading").forEach((element, i) => {

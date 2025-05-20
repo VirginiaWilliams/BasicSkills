@@ -106,10 +106,33 @@
   margin-top: 3px;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 /* ************** Totals ************** */
 
 .total {
   font-weight: 600;
+}
+
+/* ************** Error ************** */
+
+.error {
+  border: solid 1.6px red;
+  border-radius: 2px;
+}
+
+.disabled {
+  pointer-events: none;
 }
 
 /* ************** Misc ************** */

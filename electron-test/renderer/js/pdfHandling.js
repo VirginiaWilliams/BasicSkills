@@ -1,15 +1,6 @@
 const { jsPDF } = require("jspdf");
-// const html2pdf = require("html2pdf");
-// const { html2canvas } = require('html2canvas')
-// const { renderToString } = require("react-dom/server");
 
 const generateButton = document.querySelector('#generate-button');
-
-var elementHandler = {
-  '#ignorePDF': function (element, renderer) {
-    return true;
-  }
-};
 
 generateButton.addEventListener('click', async function() {
   // Remove junk

@@ -29,7 +29,7 @@ function createMainWindow() {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = dirname(__filename);
 
-    mainWindow.loadFile(path.join(__dirname, './renderer/index.html'))
+    mainWindow.loadFile(path.join(__dirname, './renderer/pages/index.html'))
 }
 
 app.whenReady().then(() => {

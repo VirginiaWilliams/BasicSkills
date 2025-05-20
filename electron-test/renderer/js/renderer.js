@@ -1,5 +1,3 @@
-import { PER17Reading } from "../questions/PER17Questions.js";
-
 window.addEventListener("DOMContentLoaded", e => {
 
     // Event listeners

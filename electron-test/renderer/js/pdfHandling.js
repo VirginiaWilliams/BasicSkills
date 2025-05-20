@@ -15,12 +15,14 @@ generateButton.addEventListener('click', async function() {
   // Remove junk
 
   var inputs = document.querySelectorAll('input');
-  inputs.forEach(input => {
-    input.style.border = '0 none';
+  inputs.forEach(i => {
+    i.style.border = '0 none';
   });
 
-  var generateButton = document.getElementById('generate-button');
-  generateButton.style.display = 'none';
+  var disappearMe = document.querySelectorAll('.disappear');
+  disappearMe.forEach(d => {
+    d.style.display = 'none';
+  });
 
   // Process
 
@@ -46,9 +48,11 @@ generateButton.addEventListener('click', async function() {
 
   // Add junk back in
 
-  inputs.forEach(input => {
-    input.style.border = '';
+  inputs.forEach(i => {
+    i.style.border = '';
   });
 
-  generateButton.style.display = '';
+  disappearMe.forEach(d => {
+    d.style.display = '';
+  });
 })

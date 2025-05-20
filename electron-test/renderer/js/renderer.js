@@ -11,7 +11,7 @@ function checkNumberValidity(ev) {
 }
 
 window.addEventListener("DOMContentLoaded", e => {
-    var inputs = document.querySelectorAll('input');
+    var inputs = document.querySelectorAll('.number-input');
 
     inputs.forEach(async i => {
         i.addEventListener("input", checkNumberValidity);

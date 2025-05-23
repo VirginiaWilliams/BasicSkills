@@ -3,7 +3,7 @@
 .page-header-container {
   width: 100%;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 .page-header {
@@ -75,13 +75,11 @@
 .number-input-row {
   display: flex;
   flex-direction: row;
-  height: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .number-input-description {
   width: 17rem;
-  height: 1rem;
   font-size: 12px;
   padding: 0;
   margin: 0;
@@ -90,20 +88,18 @@
 
 .number-input {
   width: 1rem;
-  height: 1rem;
   margin-top: auto;
-  margin-bottom: auto;
+  margin-bottom: 0;
   font-family: "Times New Roman", Times, serif;
   font-size: 12px;
 }
 
 .number-input-score {
   width: 3rem;
-  height: 1rem;
   font-size: 12px;
   padding: 0;
-  margin: 0;
-  margin-top: 3px;
+  margin-top: auto;
+  margin-bottom: 0;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -154,8 +150,16 @@ p {
   margin: 0;
 }
 
-.center {
+.glossary-title {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 1.6rem;
   margin-bottom: 0;
+}
+
+.text-br {
+  height: 10px;
+}
+
+.small-br {
+  height: 8px;
 }

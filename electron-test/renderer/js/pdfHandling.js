@@ -20,7 +20,7 @@ generateButton.addEventListener('click', async function() {
   var element = document.getElementById('entire-thing');
   var opt = {
     margin:       0.5,
-    filename:     'myfile.pdf',
+    filename:     'file.pdf',
     html2canvas:  { scale: 1, scrollY: 0 },
     jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
     scale: 4,

@@ -22,9 +22,9 @@ function createMainWindow() {
     })
 
     // open dev tools if in dev
-    if (isDev) {
-        mainWindow.webContents.openDevTools();
-    }
+    // if (isDev) {
+    //     mainWindow.webContents.openDevTools();
+    // }
 
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = dirname(__filename);

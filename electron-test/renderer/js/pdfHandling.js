@@ -47,3 +47,11 @@ generateButton.addEventListener('click', async function() {
     d.style.display = '';
   });
 })
+
+// reset button
+
+const resetButton = document.querySelector('#reset-button');
+
+resetButton.addEventListener('click', async function() {
+  document.getElementById("input-form").reset();
+});
